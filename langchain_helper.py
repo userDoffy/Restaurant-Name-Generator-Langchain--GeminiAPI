@@ -18,7 +18,7 @@ async def generate_restaurant_name_and_items(cuisine):
             template="I want to open a {cuisine} food restaurant. Suggest me just one short name"
         )
         name_chain=prompt_template_name|llm|{"name":op_parser}
-        res['restaurant_name']=name_chain.invoke("indian")['name']
+        res['restaurant_name']=name_chain.invoke(cuisine)['name']
 
         prompt_template_items=PromptTemplate(
             input_variables=['restaurant_name'],
